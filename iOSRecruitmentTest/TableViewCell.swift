@@ -9,7 +9,10 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-
+    @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var itemTitleLabel: UILabel!
+    @IBOutlet weak var itemDescLabel: UILabel!
+    
     var item: AnyObject? {
         didSet {
             if item == nil {
@@ -22,10 +25,6 @@ class TableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var iconView: UIImageView!
-    @IBOutlet weak var itemTitleLabel: UILabel!
-    @IBOutlet weak var itemDescLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         iconView.layer.cornerRadius = 4
@@ -35,5 +34,4 @@ class TableViewCell: UITableViewCell {
         super.prepareForReuse()
         self.item = nil
     }
-    
 }
