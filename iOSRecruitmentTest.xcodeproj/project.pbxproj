@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2A8C525C07F71C20B94EB878 /* Pods_iOSRecruitmentTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ECDD5CB2A773D4F33971668 /* Pods_iOSRecruitmentTest.framework */; };
 		8BA1BAD61F19237800FD54EB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1BAD51F19237700FD54EB /* Constants.swift */; };
+		8BA1BAD81F19255A00FD54EB /* ItemModelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1BAD71F19255A00FD54EB /* ItemModelResponse.swift */; };
+		8BA1BADB1F1927C000FD54EB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1BADA1F1927C000FD54EB /* NetworkManager.swift */; };
+		8BA1BADF1F193DF700FD54EB /* ViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1BADE1F193DF700FD54EB /* ViewControllerModel.swift */; };
+		8BA1BAE31F197D1A00FD54EB /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA1BAE21F197D1A00FD54EB /* AlamofireImage.framework */; };
 		D93FDE421D114DEA00AB8D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93FDE411D114DEA00AB8D9B /* AppDelegate.swift */; };
 		D93FDE4A1D114DEA00AB8D9B /* iOSRecruitmentTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D93FDE481D114DEA00AB8D9B /* iOSRecruitmentTest.xcdatamodeld */; };
 		D93FDE4C1D114DEA00AB8D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93FDE4B1D114DEA00AB8D9B /* Assets.xcassets */; };
@@ -22,6 +26,10 @@
 /* Begin PBXFileReference section */
 		14B6A8C5DF1CE30216DEDB8B /* Pods-iOSRecruitmentTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSRecruitmentTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSRecruitmentTest/Pods-iOSRecruitmentTest.debug.xcconfig"; sourceTree = "<group>"; };
 		8BA1BAD51F19237700FD54EB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8BA1BAD71F19255A00FD54EB /* ItemModelResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemModelResponse.swift; sourceTree = "<group>"; };
+		8BA1BADA1F1927C000FD54EB /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		8BA1BADE1F193DF700FD54EB /* ViewControllerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerModel.swift; sourceTree = "<group>"; };
+		8BA1BAE21F197D1A00FD54EB /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../Library/Developer/Xcode/DerivedData/iOSRecruitmentTest-evycvfkmqidimaaczrfxyuybjpwl/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		9ECDD5CB2A773D4F33971668 /* Pods_iOSRecruitmentTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSRecruitmentTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA96C193A27E90EA01EA29F /* Pods-iOSRecruitmentTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSRecruitmentTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSRecruitmentTest/Pods-iOSRecruitmentTest.release.xcconfig"; sourceTree = "<group>"; };
 		D93FDE3E1D114DEA00AB8D9B /* iOSRecruitmentTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSRecruitmentTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA1BAE31F197D1A00FD54EB /* AlamofireImage.framework in Frameworks */,
 				2A8C525C07F71C20B94EB878 /* Pods_iOSRecruitmentTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +60,7 @@
 		5A0A6BCC3A024F116D66C666 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8BA1BAE21F197D1A00FD54EB /* AlamofireImage.framework */,
 				9ECDD5CB2A773D4F33971668 /* Pods_iOSRecruitmentTest.framework */,
 			);
 			name = Frameworks;
@@ -75,6 +85,8 @@
 		8BA1BACF1F19204B00FD54EB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8BA1BAE01F193E4B00FD54EB /* Responses */,
+				8BA1BAE11F193E5A00FD54EB /* BusinessLogic */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -117,6 +129,30 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		8BA1BAD91F1927B500FD54EB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8BA1BADA1F1927C000FD54EB /* NetworkManager.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		8BA1BAE01F193E4B00FD54EB /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				8BA1BAD71F19255A00FD54EB /* ItemModelResponse.swift */,
+			);
+			name = Responses;
+			sourceTree = "<group>";
+		};
+		8BA1BAE11F193E5A00FD54EB /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+				8BA1BADE1F193DF700FD54EB /* ViewControllerModel.swift */,
+			);
+			name = BusinessLogic;
+			sourceTree = "<group>";
+		};
 		C4C79F56457556E5900F8A93 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +183,7 @@
 		D93FDE401D114DEA00AB8D9B /* iOSRecruitmentTest */ = {
 			isa = PBXGroup;
 			children = (
+				8BA1BAD91F1927B500FD54EB /* Helpers */,
 				8BA1BACE1F19204000FD54EB /* Views */,
 				8BA1BACF1F19204B00FD54EB /* Models */,
 				8BA1BACD1F19203500FD54EB /* ViewControllers */,
@@ -281,8 +318,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA1BAD81F19255A00FD54EB /* ItemModelResponse.swift in Sources */,
 				8BA1BAD61F19237800FD54EB /* Constants.swift in Sources */,
 				D93FDE581D114E7A00AB8D9B /* ViewController.swift in Sources */,
+				8BA1BADB1F1927C000FD54EB /* NetworkManager.swift in Sources */,
+				8BA1BADF1F193DF700FD54EB /* ViewControllerModel.swift in Sources */,
 				D93FDE5C1D114F9300AB8D9B /* TableViewCell.swift in Sources */,
 				D93FDE4A1D114DEA00AB8D9B /* iOSRecruitmentTest.xcdatamodeld in Sources */,
 				D93FDE421D114DEA00AB8D9B /* AppDelegate.swift in Sources */,

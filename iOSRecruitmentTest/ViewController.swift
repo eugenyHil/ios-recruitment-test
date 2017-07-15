@@ -8,14 +8,28 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    
+    fileprivate var model = ViewControllerModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+        
+        NetworkManager.getItems(successCallback: { (items: [ItemModelResponse]?) in
+            guard let items = items else {
+                return
+            }
+            
+            self.model.items = items
+            self.tableView.reloadData()
+        }, errorCallback: { (error: Error) in
+            print("error")
+        })
     }
 
     private func setupUI() {
@@ -25,7 +39,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UISearchBarDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return model.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -33,7 +47,7 @@ extension ViewController: UITableViewDataSource, UISearchBarDelegate {
             return UITableViewCell()
         }
         
-        cell.item = nil
+        cell.item = model.items[indexPath.row]
         
         return cell
     }

@@ -8,6 +8,7 @@ target 'iOSRecruitmentTest' do
 pod 'Alamofire'
 pod 'AlamofireObjectMapper'
 pod 'ObjectMapper'
+pod 'AlamofireImage'
 
 pod 'Realm'
 pod 'RealmSwift'
