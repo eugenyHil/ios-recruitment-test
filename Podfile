@@ -8,9 +8,9 @@ target 'iOSRecruitmentTest' do
 pod 'Alamofire'
 pod 'AlamofireObjectMapper'
 pod 'ObjectMapper'
-pod 'AlamofireImage'
+pod 'SDWebImage/WebP'
 
-pod 'Realm'
+pod 'Realm'#, :git => 'https://github.com/realm/realm-cocoa.git', :branch => 'af/asyncWrite'
 pod 'RealmSwift'
 
 end

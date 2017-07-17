@@ -7,32 +7,27 @@
 //
 
 import ObjectMapper
+import RealmSwift
 
 
-class ItemModelResponse: Mappable {
-    var id: NSNumber!
-    var name: String!
-    var description: String!
-    var icon: String!
-    var timestamp: TimeInterval!
-    var url: String!
+class ItemModelResponse: Object, Mappable {
+    var id: Int?
+    dynamic var name: String?
+    dynamic var modelDescription: String?
+    dynamic var icon: String?
+    var timestamp: TimeInterval?
+    dynamic var url: String?
     
-    required init?(map: Map) {
+    required convenience init?(map: Map) {
+        self.init()
     }
     
     func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]
-        description <- map["description"]
+        modelDescription <- map["description"]
         icon <- map["icon"]
         timestamp <- map["timestamp"]
         url <- map["url"]
     }
 }
-
-//id: 0,
-//name: "Item (0)",
-//description: "Description of item (0)",
-//icon: "http://localhost:8080/api/items/0/icon.png",
-//timestamp: 1468595269800,
-//url: "http://localhost:8080/api/items/0"

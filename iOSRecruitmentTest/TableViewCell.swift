@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AlamofireImage
+import SDWebImage
 
 
 class TableViewCell: UITableViewCell {
@@ -22,13 +22,12 @@ class TableViewCell: UITableViewCell {
                 itemTitleLabel.text = "Test"
                 itemDescLabel.text = "Some description"
             } else {
-                // TODO: Implement item sets
                 itemTitleLabel.text = item?.name
-                itemDescLabel.text = item?.description
+                itemDescLabel.text = item?.modelDescription
                 
                 if let imagePath = item?.icon,
-                    let url = URL(string: imagePath) {
-                    iconView.af_setImage(withURL: url)
+                    let imageUrl = URL(string: imagePath) {
+                    iconView.sd_setImage(with: imageUrl)
                 }
             }
         }
