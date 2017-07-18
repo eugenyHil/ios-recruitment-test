@@ -7,47 +7,7 @@
 //
 
 import UIKit
-import Realm
-import RealmSwift
 
-//let uiRealm = try? Realm()
-
-extension DispatchQueue {
-    public static let realmBackgroundQueue = DispatchQueue(label: "io.realm.realm.background")
-}
-
-extension ThreadSafeReference {
-    func async(write: Bool = false, queue: DispatchQueue = .realmBackgroundQueue,
-               errorHandler: ((Realm.Error) -> Void)? = nil,
-               block: @escaping (Realm, Confined) -> Void, completed: @escaping () -> Void) {
-        queue.async {
-            do {
-                let realm = try Realm()
-                if let obj = realm.resolve(self) {
-                    if write { realm.beginWrite() }
-                    block(realm, obj)
-                    if write { try realm.commitWrite() }
-                } else {
-                    // throw "object deleted" error
-                }
-            } catch {
-                errorHandler?(error as! Realm.Error)
-            }
-            
-            DispatchQueue.main.async {
-                completed()
-            }
-        }
-    }
-}
-
-extension MainViewController: BalancesViewModelViewDelegate {
-    func entriesWereAdded(viewModel: MainViewModel) {
-        print("new entries in model")
-        canShow = true
-        tableView.reloadData()
-    }
-}
 
 class MainViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
@@ -69,41 +29,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
-        
-//        if let items = uiRealm?.objects(ItemModelResponse.self),
-//            items.count > 0 {
-        
-//        getEntries { (items) in
-//            self.showData(items: Array(items))
-//        }
-        
-        
-//        } else {
-//            NetworkManager.getItems(successCallback: { (items: [ItemModelResponse]?) in
-//                guard let items = items else {
-//                    return
-//                }
-//                
-////                uiRealm?.async_write { () -> Void in
-////                    
-////                    uiRealm?.add(items)
-////                }
-//                
-//                //////////
-//                let realm = try! Realm()
-//                let models = realm.objects(ItemModelResponse.self)
-//                ThreadSafeReference(to: models).async(write: true, errorHandler: { (error) in
-//                    print(error.localizedDescription)
-//                }, block: { (realm, confined) in
-//                    realm.add(items)
-//                }, completed: {
-//                    self.showData(items: items)                    
-//                })
-//                //////////
-//            }, errorCallback: { (error: Error) in
-//                print("error")
-//            })
-//        }
     }
 
     private func setupUI() {
@@ -111,9 +36,15 @@ class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController: BalancesViewModelViewDelegate {
+    func entriesWereAdded(viewModel: MainViewModel) {
+        canShow = true
+        tableView.reloadData()
+    }
+}
+
 extension MainViewController: UITableViewDataSource, UISearchBarDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if canShow == false {
             return 0
         }

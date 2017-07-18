@@ -15,7 +15,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var itemTitleLabel: UILabel!
     @IBOutlet weak var itemDescLabel: UILabel!
     
-    var item: ItemModelResponse? {
+    var item: ItemModel? {
         didSet {
             if item == nil {
                 iconView.image = nil

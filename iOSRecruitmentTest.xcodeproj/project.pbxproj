@@ -13,8 +13,8 @@
 		8BA1BADB1F1927C000FD54EB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1BADA1F1927C000FD54EB /* NetworkManager.swift */; };
 		8BA1BADF1F193DF700FD54EB /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1BADE1F193DF700FD54EB /* MainModel.swift */; };
 		8BA1BAE71F1B818000FD54EB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1BAE61F1B818000FD54EB /* MainViewModel.swift */; };
+		8BA1BAEA1F1CEACB00FD54EB /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1BAE91F1CEACB00FD54EB /* ItemModel.swift */; };
 		D93FDE421D114DEA00AB8D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93FDE411D114DEA00AB8D9B /* AppDelegate.swift */; };
-		D93FDE4A1D114DEA00AB8D9B /* iOSRecruitmentTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D93FDE481D114DEA00AB8D9B /* iOSRecruitmentTest.xcdatamodeld */; };
 		D93FDE4C1D114DEA00AB8D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93FDE4B1D114DEA00AB8D9B /* Assets.xcassets */; };
 		D93FDE581D114E7A00AB8D9B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93FDE561D114E7A00AB8D9B /* MainViewController.swift */; };
 		D93FDE591D114E7A00AB8D9B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93FDE571D114E7A00AB8D9B /* MainViewController.xib */; };
@@ -31,11 +31,11 @@
 		8BA1BADE1F193DF700FD54EB /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		8BA1BAE21F197D1A00FD54EB /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../Library/Developer/Xcode/DerivedData/iOSRecruitmentTest-evycvfkmqidimaaczrfxyuybjpwl/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		8BA1BAE61F1B818000FD54EB /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		8BA1BAE91F1CEACB00FD54EB /* ItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		9ECDD5CB2A773D4F33971668 /* Pods_iOSRecruitmentTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSRecruitmentTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA96C193A27E90EA01EA29F /* Pods-iOSRecruitmentTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSRecruitmentTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSRecruitmentTest/Pods-iOSRecruitmentTest.release.xcconfig"; sourceTree = "<group>"; };
 		D93FDE3E1D114DEA00AB8D9B /* iOSRecruitmentTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSRecruitmentTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93FDE411D114DEA00AB8D9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D93FDE491D114DEA00AB8D9B /* iOSRecruitmentTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSRecruitmentTest.xcdatamodel; sourceTree = "<group>"; };
 		D93FDE4B1D114DEA00AB8D9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D93FDE501D114DEA00AB8D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D93FDE561D114E7A00AB8D9B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +85,7 @@
 		8BA1BACF1F19204B00FD54EB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8BA1BAE81F1CEAB700FD54EB /* Protocols */,
 				8BA1BAE01F193E4B00FD54EB /* Responses */,
 				8BA1BAE11F193E5A00FD54EB /* BusinessLogic */,
 			);
@@ -97,7 +98,6 @@
 				D93FDE411D114DEA00AB8D9B /* AppDelegate.swift */,
 				D93FDE4B1D114DEA00AB8D9B /* Assets.xcassets */,
 				D93FDE501D114DEA00AB8D9B /* Info.plist */,
-				D93FDE481D114DEA00AB8D9B /* iOSRecruitmentTest.xcdatamodeld */,
 				8BA1BAD51F19237700FD54EB /* Constants.swift */,
 			);
 			name = Resources;
@@ -159,6 +159,14 @@
 				8BA1BAE61F1B818000FD54EB /* MainViewModel.swift */,
 			);
 			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		8BA1BAE81F1CEAB700FD54EB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8BA1BAE91F1CEACB00FD54EB /* ItemModel.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		C4C79F56457556E5900F8A93 /* Pods */ = {
@@ -327,13 +335,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA1BAEA1F1CEACB00FD54EB /* ItemModel.swift in Sources */,
 				8BA1BAD81F19255A00FD54EB /* ItemModelResponse.swift in Sources */,
 				8BA1BAD61F19237800FD54EB /* Constants.swift in Sources */,
 				D93FDE581D114E7A00AB8D9B /* MainViewController.swift in Sources */,
 				8BA1BADB1F1927C000FD54EB /* NetworkManager.swift in Sources */,
 				8BA1BADF1F193DF700FD54EB /* MainModel.swift in Sources */,
 				D93FDE5C1D114F9300AB8D9B /* TableViewCell.swift in Sources */,
-				D93FDE4A1D114DEA00AB8D9B /* iOSRecruitmentTest.xcdatamodeld in Sources */,
 				D93FDE421D114DEA00AB8D9B /* AppDelegate.swift in Sources */,
 				8BA1BAE71F1B818000FD54EB /* MainViewModel.swift in Sources */,
 			);
@@ -479,19 +487,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D93FDE481D114DEA00AB8D9B /* iOSRecruitmentTest.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D93FDE491D114DEA00AB8D9B /* iOSRecruitmentTest.xcdatamodel */,
-			);
-			currentVersion = D93FDE491D114DEA00AB8D9B /* iOSRecruitmentTest.xcdatamodel */;
-			path = iOSRecruitmentTest.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D93FDE361D114DEA00AB8D9B /* Project object */;
 }

@@ -7,21 +7,8 @@
 //
 
 import UIKit
-//import AlamofireImage
 import Foundation
 
-//var downloader = diskImageDownloader()
-//
-//func diskImageDownloader(diskSpaceMB: Int = 150) -> ImageDownloader {
-//    
-//    let diskCapacity = diskSpaceMB * 1024 * 1024
-//    let diskCache = URLCache(memoryCapacity: 0, diskCapacity: diskCapacity, diskPath: "image_disk_cache")
-//    let configuration = URLSessionConfiguration.default
-//    configuration.urlCache = diskCache
-//    let downloader = ImageDownloader(configuration: configuration)
-//    UIImageView.af_sharedImageDownloader = downloader
-//    return downloader
-//}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

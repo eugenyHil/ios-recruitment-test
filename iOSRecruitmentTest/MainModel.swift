@@ -11,58 +11,93 @@ import Realm
 import RealmSwift
 
 
+extension Results {
+    
+    func toArray<T>(ofType: T.Type) -> [T] {
+        var array = [T]()
+        for i in 0 ..< count {
+            if let result = self[i] as? T {
+                array.append(result)
+            }
+        }
+        
+        return array
+    }
+}
+
 class MainModel {
     var items: [ItemModelResponse] = []
     
-    func getEntries(_ completionHandler: @escaping (_ entries: [ItemModelResponse]) -> Void) {
+    func getEntries(_ completionHandler: @escaping (_ entries: [ItemModel]) -> Void) {
         
-        let serialQueue = DispatchQueue(label: "XXqueuename")
+        let queue = DispatchQueue(label: "serialQueue")
         
-        serialQueue.async {
+        queue.async {
+            class ItemModelDub: ItemModel {
+                var id: Int
+                var name: String
+                var modelDescription: String
+                var icon: String
+                var timestamp: TimeInterval
+                var url: String
+                
+                init(id: Int, name: String, modelDescription: String, icon: String, timestamp: TimeInterval, url: String) {
+                    self.id = id
+                    self.name = name
+                    self.modelDescription = modelDescription
+                    self.icon = icon
+                    self.timestamp = timestamp
+                    self.url = url
+                }
+            }
+            
+            func getResultArray(objects: Results<ItemModelResponse>) -> [ItemModel] {
+                var returnArray = [ItemModel]()
+                for item in objects {
+                    let e = ItemModelDub(id: item.id, name: item.name, modelDescription: item.modelDescription, icon: item.icon, timestamp: item.timestamp, url: item.url)
+                    returnArray.append(e)
+                }
+                
+                return returnArray
+            }
+            
             let realm = try! Realm()
             let objects = realm.objects(ItemModelResponse.self)
             
             if objects.count > 0 {
+                let returnArray = getResultArray(objects: objects)
                 DispatchQueue.main.async {
-                    let realm = try! Realm()
-                    let objects = realm.objects(ItemModelResponse.self)
-                    completionHandler(Array(objects))
+                    completionHandler(returnArray)
                 }
             } else {
                 NetworkManager.getItems(successCallback: { (items: [ItemModelResponse]?) in
-                    
-                    //let serialQueue = DispatchQueue(label: "queuename")
-                    
                     guard let items = items else {
                         return
                     }
                     
-                    serialQueue.async {
+                    queue.async {
+                        func getResultArrayE(objects: [ItemModelResponse]) -> [ItemModel] {
+                            var returnArray = [ItemModel]()
+                            for item in objects {
+                                let e = ItemModelDub(id: item.id, name: item.name, modelDescription: item.modelDescription, icon: item.icon, timestamp: item.timestamp, url: item.url)
+                                returnArray.append(e)
+                            }
+                            
+                            return returnArray
+                        }
+                        
                         let realm = try! Realm()
                         
                         try? realm.write { () -> Void in
                             realm.add(items)
                         }
                         
+                        let returnArray = getResultArrayE(objects: items)
+                        
                         DispatchQueue.main.async {
-//                            completionHandler(Array(items))
-                            let realm = try! Realm()
-                            let objects = realm.objects(ItemModelResponse.self)
-                            completionHandler(Array(objects))
+                            completionHandler(returnArray)
                         }
                     }
-                    
-                    //////////
-//                    let realm = try! Realm()
-//                    let models = realm.objects(ItemModelResponse.self)
-//                    ThreadSafeReference(to: models).async(write: true, errorHandler: { (error) in
-//                        print(error.localizedDescription)
-//                    }, block: { (realm, confined) in
-//                        realm.add(items)
-//                    }, completed: {
-//                        self.showData(items: items)                    
-//                    })
-                    //////////
                 }, errorCallback: { (error: Error) in
                     print("error")
                 })

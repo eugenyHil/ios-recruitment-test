@@ -17,7 +17,7 @@ protocol BalancesViewModelViewDelegate: class {
 class MainViewModel {
     weak var viewDelegate: BalancesViewModelViewDelegate?
     
-    fileprivate var entries: [ItemModelResponse]? {
+    fileprivate var entries: [ItemModel]? {
         didSet {
             self.viewDelegate?.entriesWereAdded(viewModel: self)
         }
@@ -41,7 +41,7 @@ class MainViewModel {
     }
 
     
-    func entryAtRow(_ rowNr: Int) -> ItemModelResponse? {       
+    func entryAtRow(_ rowNr: Int) -> ItemModel? {       
         if let entries = self.entries,
             entries.count > 0 {
                 return entries[rowNr]

@@ -11,7 +11,9 @@ import Foundation
 
 struct Constants
 {
+    // General
     static let url_address = "http://localhost:8080/api/"
     
+    // Identifiers
     static let tableViewCellIdentifier = "TableViewCell"
 }

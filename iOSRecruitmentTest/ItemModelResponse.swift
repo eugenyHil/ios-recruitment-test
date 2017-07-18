@@ -10,24 +10,28 @@ import ObjectMapper
 import RealmSwift
 
 
-class ItemModelResponse: Object, Mappable {
-    var id: Int?
-    dynamic var name: String?
-    dynamic var modelDescription: String?
-    dynamic var icon: String?
-    var timestamp: TimeInterval?
-    dynamic var url: String?
+class ItemModelResponse: Object, Mappable, ItemModel {
+    var id: Int = 0
+    dynamic var name: String = ""
+    dynamic var modelDescription: String = ""
+    dynamic var icon: String = ""
+    var timestamp: TimeInterval = 0.0
+    dynamic var url: String = ""
     
     required convenience init?(map: Map) {
-        self.init()
+        self.init()        
+        do {
+            id = try map.value("id")
+            name = try map.value("name")
+            modelDescription = try map.value("description")
+            icon = try map.value("icon")
+            timestamp = try map.value("timestamp")
+            url = try map.value("url")
+        } catch {
+            return nil
+        }
     }
     
     func mapping(map: Map) {
-        id <- map["id"]
-        name <- map["name"]
-        modelDescription <- map["description"]
-        icon <- map["icon"]
-        timestamp <- map["timestamp"]
-        url <- map["url"]
     }
 }
