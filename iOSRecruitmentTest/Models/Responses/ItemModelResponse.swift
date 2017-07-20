@@ -11,12 +11,12 @@ import RealmSwift
 
 
 class ItemModelResponse: Object, Mappable, ItemModel {
-    var id: Int = 0
-    dynamic var name: String = ""
-    dynamic var modelDescription: String = ""
-    dynamic var icon: String = ""
-    var timestamp: TimeInterval = 0.0
-    dynamic var url: String = ""
+    var id: Int = DefaultValue.int
+    dynamic var name: String = DefaultValue.string
+    dynamic var modelDescription: String = DefaultValue.string
+    dynamic var icon: String = DefaultValue.string
+    var timestamp: TimeInterval = DefaultValue.double
+    dynamic var url: String = DefaultValue.string
     
     required convenience init?(map: Map) {
         self.init()        

@@ -21,17 +21,21 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" placeholder="Search me!" translatesAutoresizingMaskIntoConstraints="NO" id="pcO-sR-wJg">
+                <searchBar contentMode="redraw" placeholder="Search me!" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcO-sR-wJg" userLabel="searchBar">
                     <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="AN3-gC-vpv"/>
                     </constraints>
                     <textInputTraits key="textInputTraits"/>
+                    <scopeButtonTitles>
+                        <string>Title</string>
+                        <string>Title</string>
+                    </scopeButtonTitles>
                     <connections>
                         <outlet property="delegate" destination="-1" id="95S-it-KJO"/>
                     </connections>
                 </searchBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nf9-A8-L41">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nf9-A8-L41" userLabel="tableView">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>

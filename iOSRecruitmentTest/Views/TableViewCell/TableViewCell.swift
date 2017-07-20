@@ -11,6 +11,10 @@ import SDWebImage
 
 
 class TableViewCell: UITableViewCell {
+    fileprivate let defaultTitleText = "Test"
+    fileprivate let defaultDescriptionText = "Some description"
+    fileprivate let defaultIconCornerRadius: CGFloat = 4
+    
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var itemTitleLabel: UILabel!
     @IBOutlet weak var itemDescLabel: UILabel!
@@ -19,8 +23,8 @@ class TableViewCell: UITableViewCell {
         didSet {
             if item == nil {
                 iconView.image = nil
-                itemTitleLabel.text = "Test"
-                itemDescLabel.text = "Some description"
+                itemTitleLabel.text = defaultTitleText
+                itemDescLabel.text = defaultDescriptionText
             } else {
                 itemTitleLabel.text = item?.name
                 itemDescLabel.text = item?.modelDescription
@@ -35,7 +39,7 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        iconView.layer.cornerRadius = 4
+        iconView.layer.cornerRadius = defaultIconCornerRadius
     }
     
     override func prepareForReuse() {
